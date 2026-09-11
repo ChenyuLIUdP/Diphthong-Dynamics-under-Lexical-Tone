@@ -12,6 +12,14 @@ This repository accompanies *Diphthong Dynamics under Lexical Tone: Cross-Dialec
 | `fpca_core_algorithm.R` | Common-basis fPCA, score models, bridge comparisons and relative tonal configuration. |
 | `fof_core_algorithm.R` | Function-on-function regression and coefficient-surface extraction. |
 
+| File | Contents |
+| --- | --- |
+| [SuppPub1.html](SuppPub1.html) | Supplementary methods, data-screening summaries, GAMM, fPCA and FoF results, and robustness analyses. |
+| [SuppPub2_GAMM_summaries.html](SuppPub2_GAMM_summaries.html) | Example data frames, detailed GAMM summaries, diagnostics and model comparisons. |
+| [gamm_core_algorithm.R](gamm_core_algorithm.R) | Baseline and mechanistic GAMMs, cascade predictions and reconstruction RMSE summaries. |
+| [fpca_core_algorithm.R](fpca_core_algorithm.R) | Common-basis fPCA, score models, bridge comparisons and relative tonal configuration. |
+| [fof_core_algorithm.R](fof_core_algorithm.R) | Function-on-function regression and coefficient-surface extraction. |
+
 ## Inputs and analysis scope
 
 ### GAMM
