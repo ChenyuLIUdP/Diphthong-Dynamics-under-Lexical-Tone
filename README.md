@@ -26,7 +26,7 @@ The script fits F1 and *f*0 baseline models and a mechanistic F1 model. For each
 
 Inputs are complete wide-format matrices, `F0` and `F1`, with one token per row and 11 time columns, plus an aligned token-level metadata table, `meta`. Both origins, both varieties and both diphthongs are pooled. Separate fPCAs establish common bases for f0 and F1, retaining at least three PCs under the 99% variance rule. Categorical predictors use ordinary factors.
 
-The script includes score mixed models, auxiliary duration and residual analyses, origin-specific bridges for fit and condition-mean discrepancy summaries, and a separate pooled bridge for paired direct-versus-bridged comparisons. Covariate-adjusted PC1–PC2 marginal means are used to reconstruct each signal's trajectories and compare relative tonal configurations.
+The script includes score mixed models, comparative analysis between full and reduced models, auxiliary duration analyses, origin-specific bridges for fit and condition-mean discrepancy summaries, and a separate pooled bridge for paired direct-versus-bridged comparisons. Covariate-adjusted PC1 and PC2 marginal means are multiplied by their corresponding eigenfunctions to obtain score-weighted component curves over time. PC1–PC2 reconstructions of f0 and F1 are then centered across tones at each time point within each origin × variety-status cell to compare relative tonal configurations.
 
 ### FoF
 
