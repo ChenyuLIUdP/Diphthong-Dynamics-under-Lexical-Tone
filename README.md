@@ -47,5 +47,3 @@ The script includes input centering, trapezoidal integration weights, a first fi
 | GAMM | `mgcv`, `itsadug` |
 | fPCA | `fda`, `lmerTest`, `emmeans` |
 | FoF | `mgcv`, `itsadug`, `ggplot2` |
-
-Brief variable definitions are provided at the beginning of each script. Prepared inputs must preserve the stated token alignment, factor levels and time ordering.
