@@ -20,19 +20,19 @@ The analysis is performed separately for each speaker origin. All three models u
 
 `ToneVarDiphInt.ord` represents tone × variety × diphthong, and `DiphVar.ord` represents diphthong × variety. Variables ending in `.ord` are ordered factors with treatment contrasts; speaker and lexical-item identifiers are ordinary factors.
 
-The script fits F1 and *f*0 baseline models and a mechanistic F1 model. For each model, `itsadug::start_value_rho()` estimates rho from a first fit without AR(1), followed by a second fit with AR(1). Population-level direct and cascade F1 predictions exclude random smooths. RMSE is calculated within each full condition cell, averaged equally across realized onset, carrier-sentence and reading-order combinations, and then averaged equally across sexes and diphthongs for each tone and variety.
+The script fits F1 and *f*0 baseline models and a mechanistic F1 model. For each model, `itsadug::start_value_rho()` estimates rho from a first fit without AR(1), followed by a second fit with AR(1). Population-level direct and cascade F1 predictions exclude random smooths. RMSE between the direct and cascade F1 predictions is calculated within each full condition cell, averaged equally across realized onset, carrier-sentence and reading-order combinations, and then averaged equally across sexes and diphthongs for each tone and variety.
 
 ### fPCA
 
-Inputs are complete wide-format matrices, `F0` and `F1`, with one token per row and 11 time columns, plus an aligned token-level metadata table, `meta`. Both origins, both varieties and both diphthongs are pooled. Separate fPCAs establish common bases for f0 and F1, retaining at least three PCs under the 99% variance rule. Categorical predictors use ordinary factors.
+Inputs are complete wide-format matrices, `F0` and `F1`, with one token per row and 11 time columns, plus an aligned token-level metadata table, `meta`. Both origins, both varieties and both diphthongs are pooled. Separate fPCAs establish common bases for *f*0 and F1, retaining at least three PCs under the 99% variance rule. Categorical predictors use ordinary factors.
 
-The script includes score mixed models, comparative analysis between full and reduced models, auxiliary duration analyses, origin-specific bridges for fit and condition-mean discrepancy summaries, and a separate pooled bridge for paired direct-versus-bridged comparisons. Covariate-adjusted PC1 and PC2 marginal means are multiplied by their corresponding eigenfunctions to obtain score-weighted component curves over time. PC1–PC2 reconstructions of f0 and F1 are then centered across tones at each time point within each origin × variety-status cell to compare relative tonal configurations.
+The script includes score mixed models, comparative analysis between full and reduced models, auxiliary duration analyses, origin-specific bridges for fit and condition-mean discrepancy summaries, and a separate pooled bridge for paired direct-versus-bridged comparisons. Covariate-adjusted PC1 and PC2 marginal means are multiplied by their corresponding eigenfunctions to obtain score-weighted component curves over time. PC1–PC2 reconstructions of *f*0 and F1 are then centered across tones at each time point within each origin × variety-status cell to compare relative tonal configurations.
 
 ### FoF
 
 The analysis is performed separately for each speaker origin. Inputs are complete wide-format matrices, `F0` and `F1`, with one token per row and 11 time columns, plus aligned metadata, `meta`. The script expands F1 into long format while retaining the full *f*0 input curve for each output time point. Ordered factors use treatment contrasts.
 
-The matrix-valued tensor term approximates the functional linear effect ∫ xᵢ(s) β(s,t) ds, where s indexes input f0 time and t indexes output F1 time. Here, xᵢ(s)  is the centered *f*0 input curve. The matrix inputs are:
+The matrix-valued tensor term approximates the functional linear effect ∫ xᵢ(s) β(s,t) ds, where s indexes input *f*0 time and t indexes output F1 time. Here, xᵢ(s) is the *f*0 input curve centered at each input time point by subtracting the across-token mean within the speaker-origin subset. The matrix inputs are:
 
 - `S`: input-time matrix; each row contains the 11 *f*0 time points (0–10).
 - `Tmat`: output-time matrix; each row repeats its F1 output time across all 11 columns.
