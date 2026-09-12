@@ -1,6 +1,6 @@
 # Core analysis algorithms and supplementary documents
 
-This repository accompanies *Diphthong Dynamics under Lexical Tone: Cross-Dialectal Evidence for Category-Specific f0–F1 Coupling*. It contains two supplementary documents and three R scripts illustrating the core analyses.
+This [GitHub repository](https://github.com/ChenyuLIUdP/Diphthong-Dynamics-under-Lexical-Tone) accompanies *Diphthong Dynamics under Lexical Tone: Cross-Dialectal Evidence for Category-Specific f0–F1 Coupling*. It contains two supplementary documents and three R scripts illustrating the core analyses.
 
 ## Repository contents
 
