@@ -22,7 +22,7 @@ fpca <- list()
 for (signal in c("F0", "F1")) {
   Y <- curves[[signal]]
   smoothed <- smooth.basis(0:10, t(Y), fd_par)
-  nharm_max <- max(3, min(10, nrow(Y) - 1))
+  nharm_max <- max(3, min(11, nrow(Y) - 1))
   pc <- pca.fd(smoothed$fd, nharm = nharm_max, centerfns = TRUE)
   n_keep <- which(cumsum(pc$values) / sum(pc$values) >= 0.99)[1]
   if (is.na(n_keep)) n_keep <- length(pc$values)
