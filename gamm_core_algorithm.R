@@ -9,7 +9,8 @@
 # sex.ord, leftSegment.ord, type.ord, order.ord = sex, onset, carrier, reading order.
 # All .ord columns MUST be ordered factors with original reference levels and
 # treatment contrasts, e.g. contrasts(dat$sex.ord) <- "contr.treatment".
-# start: TRUE at the first retained row of each token, FALSE otherwise.
+# start: TRUE at the first retained row of each token, FALSE otherwise. 
+# (Based on retained rows included in the model, might be different between models.)
 # nd: prepared prediction grid with original factor levels, all realized covariate
 # cells, time points, and condition-cell mean durationZ; IDs are placeholders.
 
@@ -86,7 +87,10 @@ rho_baseline_f1 <- itsadug::start_value_rho(f1_noAR)
 rho_baseline_f0 <- itsadug::start_value_rho(f0_noAR)
 rho_mechanistic <- itsadug::start_value_rho(mech_noAR)
 
-# 4. Second-pass AR(1) fits, with exactly the same formulas.
+# 4. Second-pass AR(1) fits, with exactly the same formulas. 
+# For start, TRUE should be at the first retained row of each token. 
+# Since baseline_f0 and mechanistic_f1 have f0 values in the models, 
+# the start should be based on retained observations (with f0 values) of each token.
 baseline_f1 <- update(f1_noAR, rho = rho_baseline_f1, AR.start = dat$start)
 baseline_f0 <- update(f0_noAR, rho = rho_baseline_f0, AR.start = dat$start)
 mechanistic_f1 <- update(mech_noAR, rho = rho_mechanistic, AR.start = dat$start)
