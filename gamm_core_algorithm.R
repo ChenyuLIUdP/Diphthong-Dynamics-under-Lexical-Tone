@@ -10,7 +10,9 @@
 # All .ord columns MUST be ordered factors with original reference levels and
 # treatment contrasts, e.g. contrasts(dat$sex.ord) <- "contr.treatment".
 # start: TRUE at the first retained row of each token, FALSE otherwise. 
-# (Based on retained rows included in the model, might be different between models.)
+# start values are based on retained rows included in the model. 
+# In baseline_f0 and mechanistic_f1 models, we use "start_f0" to indicate the updated start 
+# values of the retained rows, with omitting the non-valable f0 observations.
 # nd: prepared prediction grid with original factor levels, all realized covariate
 # cells, time points, and condition-cell mean durationZ; IDs are placeholders.
 
@@ -90,10 +92,10 @@ rho_mechanistic <- itsadug::start_value_rho(mech_noAR)
 # 4. Second-pass AR(1) fits, with exactly the same formulas. 
 # For start, TRUE should be at the first retained row of each token. 
 # Since baseline_f0 and mechanistic_f1 have f0 values in the models, 
-# the start should be based on retained observations (with f0 values) of each token.
+# "start_f0" is used here to define the start based on retained observations (with f0 values) of each token. 
 baseline_f1 <- update(f1_noAR, rho = rho_baseline_f1, AR.start = dat$start)
-baseline_f0 <- update(f0_noAR, rho = rho_baseline_f0, AR.start = dat$start)
-mechanistic_f1 <- update(mech_noAR, rho = rho_mechanistic, AR.start = dat$start)
+baseline_f0 <- update(f0_noAR, rho = rho_baseline_f0, AR.start = dat$start_f0)
+mechanistic_f1 <- update(mech_noAR, rho = rho_mechanistic, AR.start = dat$start_f0)
 
 # 5. Population-level direct and cascade predictions (exclude random smooths).
 random_terms_f1 <- character()
